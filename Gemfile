@@ -7,6 +7,7 @@ gem "sinatra-contrib"
 gem "erubis"
 gem "pg"
 gem "bcrypt"
+gem "rake"
 
 group :production do
   gem "puma"
