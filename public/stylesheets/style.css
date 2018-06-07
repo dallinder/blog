@@ -1,0 +1,107 @@
+body {
+	background-color: #f9e794;
+	color: #6F1D24;
+}
+
+/*Main styles*/
+
+main {
+	margin-top: 50px;
+}
+
+.mx-auto h1 {
+	margin-bottom: 40px;
+	text-decoration: underline;
+
+}
+
+main h2 {
+	text-align: left;
+	margin-bottom: 5px;
+	font-size: 1.75rem;
+	text-decoration: underline;
+}
+
+.col-lg-8 {
+	border: 1px solid #6F1D24;
+	background-color: white;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+.col-lg-8 span {
+	text-decoration: underline;
+}
+
+.title {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+main p {
+	letter-spacing: 0.5px;
+	margin-top: 20px;
+}
+
+main a {
+	color: inherit;
+}
+
+main a:hover {
+	color: inherit;
+}
+
+.row .col-lg-6 {
+	border-left: 1px solid #6F1D24;
+	border-right: 1px solid #6F1D24;
+}
+
+/*Navigation styles*/
+
+nav a img {
+	width: 20px;
+}
+
+.dropdown-item.active  {
+	background-color: #6F1D24;
+}
+
+.dropdown-item:focus {
+	background-color: #6F1D24;
+}
+
+/*Table Styles*/
+
+
+table th {
+	border-bottom: 2px solid #f9e794 !important;
+}
+
+table tr {
+	border-bottom: 2px solid #f9e794 !important;
+}
+
+/*Contact Form styles*/
+
+
+
+/*Blog Styles*/
+
+.blog {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+/*Media Queries*/
+
+@media (max-width: 991.98px) { 
+	.row .col-lg-6,
+	.row .col-lg-3 {
+		border-top: 2px solid #6F1D24;
+	}
+
+	.remind101 {
+		border-top: 2px solid #6F1D24;
+	}
+ }
