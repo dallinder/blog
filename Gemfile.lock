@@ -1,22 +1,45 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     backports (3.11.3)
     bcrypt (3.1.12)
+    dm-core (1.2.1)
+      addressable (~> 2.3)
+    dm-migrations (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-timestamps (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-validations (1.2.0)
+      dm-core (~> 1.2.0)
     erubis (2.7.0)
     multi_json (1.13.1)
     pg (1.0.0)
+    public_suffix (3.0.2)
     puma (3.11.4)
     rack (1.6.10)
+    rack-flash (0.1.2)
+      rack
     rack-protection (1.5.5)
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rake (12.3.1)
+    rufus-tokyo (1.0.7)
     sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    sinatra-authentication (0.4.1)
+      dm-core
+      dm-migrations
+      dm-timestamps
+      dm-validations
+      rack-flash
+      rufus-tokyo
+      sinatra
+      sinbook
     sinatra-contrib (1.4.7)
       backports (>= 2.0)
       multi_json
@@ -24,18 +47,25 @@ GEM
       rack-test
       sinatra (~> 1.4.0)
       tilt (>= 1.3, < 3)
+    sinbook (0.1.9)
+      yajl-ruby
     tilt (2.0.8)
+    yajl-ruby (1.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bcrypt
+  dm-core
+  dm-migrations
   erubis
   pg
   puma
+  rack-flash
   rake
   sinatra (~> 1.4.7)
+  sinatra-authentication
   sinatra-contrib
 
 RUBY VERSION

@@ -5,10 +5,20 @@ require 'time'
 
 require_relative 'db_persistence'
 
+set :template_engines, {
+  :css=>[],
+  :xml=>[],
+  :js=>[],
+  :html=>[:erb],
+  :all=>[:erb],
+  :json=>[]
+}
+
 configure do
 	enable :sessions
 	set :session_secret, 'secret'
 	set :erb, :escape_html => true
+	# set :template_engine, :erb
 end
 
 configure(:development) do
@@ -35,7 +45,6 @@ end
 
 
 get '/create_post' do
-	
 	erb :create_post, layout: :layout
 end
 
