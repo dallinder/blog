@@ -21,10 +21,8 @@ class Database
 
   def add_post(post_info, post_name, period)
     sql = "INSERT INTO posts(post, name, period) VALUES ($1, $2, $3)"
-    changeTime = "UPDATE posts SET post_time = DATE_TRUNC('seconds', NOW());"
 
     query(sql, post_info, post_name, period)
-    query(changeTime);
   end
 
   def get_all_posts(period)

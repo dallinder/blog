@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/contrib'
 require 'bcrypt'
+require 'time'
 
 require_relative 'db_persistence'
 
