@@ -33,6 +33,7 @@ get '/jhorch' do
 	erb :jhorch, layout: :layout
 end
 
+
 get '/create_post' do
 	
 	erb :create_post, layout: :layout
