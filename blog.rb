@@ -42,8 +42,13 @@ def logged_in?
 	!session[:username].nil?
 end
 
+def convert_time(time)
+	time.split(':')[0,2].join(':')
+end
+
 get '/jhorch' do
 	@posts = @storage.get_all_posts('jhorch').sort_by { |period| -period[:id].to_i }
+
 	erb :jhorch, layout: :layout
 end
 

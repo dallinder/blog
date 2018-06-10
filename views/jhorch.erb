@@ -2,7 +2,7 @@
 	<div class="col-lg-8 mx-auto">
 		<h2><%= post[:name] %></h2>
 		<p class="title"><span>Post Date</span>: <%= post[:post_date] %></p>
-		<p class="title"><span>Post Time</span>: <%= post[:post_time] %> Central Time</p>
+		<p class="title"><span>Post Time</span>: <%= convert_time(post[:post_time]) %> Central Time</p>
 		<p><%= post[:post] %></p>
 	</div>
 <% end %>
