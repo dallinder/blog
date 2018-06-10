@@ -8,3 +8,9 @@ CREATE TABLE posts (
 );
 
 UPDATE posts SET post_time = DATE_TRUNC('seconds', NOW());
+
+CREATE TABLE users (
+id serial PRIMARY KEY,
+username text NOT NULL UNIQUE,
+password text NOT NULL
+);

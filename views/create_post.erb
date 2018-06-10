@@ -1,55 +1,65 @@
-<div class="row">
-  <div class="col-lg-5 mx-auto">
-		<h1 class="blog">Create Blog Post</h1>
-	</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+  		<h1 class="blog">Create Blog Post</h1>
+  	</div>
+
+    <div class="col-lg-5">
+      <p>You are logged in as: <%= session[:username] %></p>
+      <p>Click <a href="/delete_post">here</a> to delete a post.</p>
+      <form action="/logout" method="post">
+        <button type="submit" class="btn btn-sm btn-default">Logout</button>
+      </form>
+    </div>
+  </div>
+
+  <% if session[:success] %>
+  	<div class="row">
+  		<div class="col-lg-5">
+  	  	<div class="alert alert-success" role="alert">
+  	  		<%= session.delete(:success) %>
+  			</div>
+  		</div>
+  	</div>
+  <% end %>
+
+
+  <form method="post">
+  	<div class="row">
+        <div class="col-lg-5 form-group">
+          <label for="message">Post:</label>
+          <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
+        </div>
+    	</div>
+
+    <div class="row">
+    	<div class="col-lg-5 form-group">
+    		<label for="name">Name:</label>
+    		<input type="text" class="form-control" id="name" name="name" required>
+    	</div>
+    </div>
+
+    <div class="row">
+    	<div class="col-lg-5 form-group">
+    		<div class="custom-control custom-radio">
+    			<input type="radio" id="jhorch" name="class" class="custom-control-input" value="jhorch">
+    		<label class="custom-control-label" for="jhorch">Junior High Blog</label>
+  			</div>
+
+  			<div class="custom-control custom-radio">
+    			<input type="radio" id="4orch" name="class" class="custom-control-input" value="4orch">
+    		<label class="custom-control-label" for="4orch">4th Grade Orchestra Blog</label>
+  			</div>
+
+  			<!-- Add more radio buttons for different classes -->
+    	</div>
+    </div>
+
+    <div class="row">
+    	<div class="col-lg-5 form-group">
+    		<button type="submit" class="btn btn-lg btn-default">Submit</button>
+    	</div>
+    </div>
+
+  </form>
 </div>
-
-<% if session[:success] %>
-	<div class="row">
-		<div class="col-lg-5 mx-auto">
-	  	<div class="alert alert-success" role="alert">
-	  		<%= session.delete(:success) %>
-			</div>
-		</div>
-	</div>
-<% end %>
-
-
-<form method="post">
-	<div class="row">
-      <div class="col-lg-5 mx-auto form-group">
-        <label for="message">Post:</label>
-        <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
-      </div>
-  	</div>
-
-  <div class="row">
-  	<div class="col-lg-5 mx-auto form-group">
-  		<label for="name">Name:</label>
-  		<input type="text" class="form-control" id="name" name="name" required>
-  	</div>
-  </div>
-
-  <div class="row">
-  	<div class="col-lg-5 mx-auto form-group">
-  		<div class="custom-control custom-radio">
-  			<input type="radio" id="jhorch" name="class" class="custom-control-input" value="jhorch">
-  		<label class="custom-control-label" for="jhorch">Junior High Blog</label>
-			</div>
-
-			<div class="custom-control custom-radio">
-  			<input type="radio" id="4orch" name="class" class="custom-control-input" value="4orch">
-  		<label class="custom-control-label" for="4orch">4th Grade Orchestra Blog</label>
-			</div>
-
-			<!-- Add more radio buttons for different classes -->
-  	</div>
-  </div>
-
-  <div class="row">
-  	<div class="col-lg-5 mx-auto form-group">
-  		<button type="submit" class="btn btn-lg btn-default">Submit</button>
-  	</div>
-  </div>
-
-</form>

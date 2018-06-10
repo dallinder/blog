@@ -1,0 +1,17 @@
+<% if @number_of_users >= 2 %>
+	<p>
+		Sorry you cannot sign-up. Please speak with Mr. Allinder to gain access to the blog posting system
+	</p>
+<% else %>
+
+	<p>To Sign up create a username and password</p>
+	<form action="/signup" method="post">
+		<label for="username">Username</label>
+		<input type="text" id="username" name="username">
+
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password">
+
+		<button type="submit">Submit</button>
+	</form>
+<% end %>

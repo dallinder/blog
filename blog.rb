@@ -38,6 +38,10 @@ get '/' do
 	redirect '/jhorch'
 end
 
+def logged_in?
+	!session[:username].nil?
+end
+
 get '/jhorch' do
 	@posts = @storage.get_all_posts('jhorch').sort_by { |period| -period[:id].to_i }
 	erb :jhorch, layout: :layout
@@ -45,7 +49,12 @@ end
 
 
 get '/create_post' do
-	erb :create_post, layout: :layout
+	if logged_in?
+		erb :create_post, layout: :layout
+	else
+		session[:message] = 'Please log in to access this area.'
+		redirect '/login'
+	end
 end
 
 post '/create_post' do
@@ -68,3 +77,49 @@ post '/delete_post' do
 	
 	redirect '/delete_post'
 end
+
+get '/login' do
+
+	erb :login, layout: :layout
+end
+
+post '/login' do
+	result = @storage.get_user(params[:username]).reduce
+
+	if result
+		check = BCrypt::Password.new(result[:password])
+		if check = params[:password]
+			session[:username] = params[:username]
+			session[:success] = "You are logged in #{session[:username]}"
+
+			redirect '/create_post'
+		end
+	end
+
+	session[:error] = "Incorrect username or password. Please try again."
+
+	redirect '/login'
+end
+
+get '/signup' do
+	@number_of_users = @storage.check_number_users.reduce[:number_of_users].to_i
+
+	erb :signup, layout: :layout
+end
+
+post '/signup' do
+	password = BCrypt::Password.create(params[:password])
+
+	@storage.add_user(params[:username], password)
+	session[:success] = "You have signed-up. Please log in to use the system."
+
+	redirect '/login'
+end
+
+post '/logout' do
+	old_user = session[:username]
+	session.clear
+	session[:message] = "#{old_user} has been logged out."
+	redirect '/login'
+end
+

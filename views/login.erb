@@ -1,0 +1,37 @@
+<% if session[:error] %>
+	<div class="row">
+		<div class="col-lg-5 mx-auto">
+	  	<div class="alert alert-success" role="alert">
+	  		<%= session.delete(:error) %>
+			</div>
+		</div>
+	</div>
+<% elsif session[:message] %>
+	<div class="row">
+		<div class="col-lg-5 mx-auto">
+	  	<div class="alert alert-success" role="alert">
+	  		<%= session.delete(:message) %>
+			</div>
+		</div>
+	</div>
+<% elsif session[:success] %>
+	<div class="row">
+		<div class="col-lg-5 mx-auto">
+	  	<div class="alert alert-success" role="alert">
+	  		<%= session.delete(:success) %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<p>Please login to access the blog system</p>
+
+<form action="/login" method="post">
+	<label for="username">Username</label>
+	<input type="text" id="username" name="username">
+
+	<label for="password">Password</label>
+	<input type="password" id="password" name="password">
+
+	<button type="submit">Submit</button>
+</form>

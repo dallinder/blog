@@ -41,4 +41,30 @@ class Database
 
     query(sql, id);
   end
+
+  def get_user(user)
+    sql = "SELECT * FROM users WHERE (username = $1)"
+
+    result = query(sql, user)
+
+    result.map do |tuple|
+      { username: tuple['username'], password: tuple['password']}
+    end
+  end
+
+  def check_number_users
+    sql = "SELECT count(*) AS exact_count FROM users"
+
+    result = query(sql)
+
+    result.map do |tuple|
+      { number_of_users: tuple['exact_count']}
+    end
+  end
+
+  def add_user(user, pass)
+    sql = "INSERT INTO users(username, password) VALUES ($1, $2)"
+
+    query(sql, user, pass)
+  end
 end

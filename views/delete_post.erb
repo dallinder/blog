@@ -1,12 +1,21 @@
 <div class="row">
-  <div class="col-lg-5 mx-auto">
+  <div class="col-lg-5">
 		<h1 class="blog">Delete Blog Post</h1>
 	</div>
+
+  <div class="col-lg-5">
+      <p>You are logged in as: <%= session[:username] %></p>
+      <p>Click <a href="/create_post">here</a> to create a post.</p>
+      <form action="/logout" method="post">
+        <button type="submit" class="btn btn-sm btn-default">Logout</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <% if session[:success] %>
 	<div class="row">
-		<div class="col-lg-5 mx-auto">
+		<div class="col-lg-5">
 	  	<div class="alert alert-success" role="alert">
 	  		<%= session.delete(:success) %>
 			</div>
@@ -16,7 +25,7 @@
 
 <form action= "/delete_post" method="post">
 	<div class="row">
-      <div class="col-lg-5 mx-auto form-group">
+      <div class="col-lg-5 form-group">
       	<select name="class_id"class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
     			<option selected>Choose a post by name:</option>
 
@@ -31,7 +40,7 @@
   </div>
 
   <div class="row">
-  	<div class="col-lg-5 mx-auto form-group">
+  	<div class="col-lg-5 form-group">
   		<button class="btn btn-lg btn-default" data-toggle="confirmation">Delete</button>
   	</div>
   </div>
