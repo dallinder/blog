@@ -1,4 +1,6 @@
 require 'pg'
+require 'date'
+require 'time'
 
 class Database
 	def initialize(logger)
@@ -20,9 +22,10 @@ class Database
   end
 
   def add_post(post_info, post_name, period)
-    sql = "INSERT INTO posts(post, name, period) VALUES ($1, $2, $3)"
+    sql = "INSERT INTO posts(post, name, period, post_time) VALUES ($1, $2, $3, $4)"
+    time = DateTime.now.strftime("%H:%M")
 
-    query(sql, post_info, post_name, period)
+    query(sql, post_info, post_name, period, time)
   end
 
   def get_all_posts(period)
