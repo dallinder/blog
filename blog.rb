@@ -44,12 +44,12 @@ end
 
 def convert_time(time)
 	t = Time.parse(time)
-	t.getlocal.strftime("%I:%M%p")
+	t.strftime("%I:%M%p")
 end
 
 def get_year(time)
 	t = Time.parse(time)
-	t.getlocal.strftime("%m/%e/%Y")
+	t.strftime("%m/%e/%Y")
 end
 
 get '/jhorch' do
