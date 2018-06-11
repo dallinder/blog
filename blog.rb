@@ -43,7 +43,13 @@ def logged_in?
 end
 
 def convert_time(time)
-	time.split(':')[0,2].join(':')
+	t = Time.parse(time)
+	t.getlocal.strftime("%I:%M%p")
+end
+
+def get_year(time)
+	t = Time.parse(time)
+	t.getlocal.strftime("%m/%e/%Y")
 end
 
 get '/jhorch' do

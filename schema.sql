@@ -3,11 +3,9 @@ CREATE TABLE posts (
 	name text NOT NULL UNIQUE,
 	period text NOT NULL,
 	post text NOT NULL,
-	post_date DATE NOT NULL DEFAULT CURRENT_DATE,
-	post_time TIME NOT NULL DEFAULT CURRENT_TIME
+	post_time TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-UPDATE posts SET post_time = DATE_TRUNC('seconds', NOW());
 
 CREATE TABLE users (
 id serial PRIMARY KEY,

@@ -22,10 +22,9 @@ class Database
   end
 
   def add_post(post_info, post_name, period)
-    sql = "INSERT INTO posts(post, name, period, post_time) VALUES ($1, $2, $3, $4)"
-    time = DateTime.now.strftime("%H:%M")
+    sql = "INSERT INTO posts(post, name, period) VALUES ($1, $2, $3)"
 
-    query(sql, post_info, post_name, period, time)
+    query(sql, post_info, post_name, period)
   end
 
   def get_all_posts(period)
@@ -70,4 +69,5 @@ class Database
 
     query(sql, user, pass)
   end
+
 end

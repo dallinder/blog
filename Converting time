@@ -1,0 +1,4 @@
+Converting time
+1. Get timestamp from database in UTC
+2. Parse a time instance (Time.parse(stringFromDatabase))
+3. t.getlocal.stfrtime("at %I:%M%p")
