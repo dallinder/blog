@@ -52,8 +52,8 @@ def get_year(time)
 	t.strftime("%m/%e/%Y")
 end
 
-get '/jhorch' do
-	@posts = @storage.get_all_posts('jhorch').sort_by { |period| -period[:id].to_i }
+get '/blog/:group' do
+	@posts = @storage.get_all_posts(params[:group]).sort_by { |period| -period[:id].to_i }
 
 	erb :jhorch, layout: :layout
 end
@@ -75,8 +75,8 @@ post '/create_post' do
 	redirect '/create_post'
 end
 
-get '/delete_post' do
-	@posts = @storage.get_all_posts('jhorch').sort_by { |period| -period[:id].to_i }
+get '/delete_post/:group' do
+	@posts = @storage.get_all_posts(params[:group]).sort_by { |period| -period[:id].to_i }
 
 	erb :delete_post, layout: :layout
 end
