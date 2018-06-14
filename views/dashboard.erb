@@ -1,0 +1,16 @@
+<h1>Welcome <%= session[:username] %></h1>
+
+<div class="row">
+	<div class="col-lg-5 mx-auto">
+		<h2><a href="/create_post">Create a post</a></h2>
+	</div>
+
+	<div class="col-lg-5 mx-auto">
+		<h2>Delete a post</h2>
+			<ul>
+				<% @periods.each do |period| %>
+					<li><a href="delete_post/<%= period[:period] %>"><%= period[:period] %></a></li>
+				<% end %>
+			</ul>
+	</div>
+</div>

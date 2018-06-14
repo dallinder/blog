@@ -70,4 +70,13 @@ class Database
     query(sql, user, pass)
   end
 
+  def get_all_periods
+    sql = "SELECT period FROM posts"
+
+    result = query(sql)
+
+    result.map do |tuple| 
+      { period: tuple['period']}
+    end
+  end
 end

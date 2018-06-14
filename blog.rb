@@ -52,6 +52,17 @@ def get_year(time)
 	t.strftime("%m/%e/%Y")
 end
 
+get '/dashboard' do
+	if logged_in?
+		@periods = @storage.get_all_periods
+
+		erb :dashboard, layout: :layout
+	else
+		session[:message] = 'Please log in to access this area.'
+		redirect '/login'
+	end
+end
+
 get '/blog/:group' do
 	@posts = @storage.get_all_posts(params[:group]).sort_by { |period| -period[:id].to_i }
 
@@ -103,7 +114,7 @@ post '/login' do
 			session[:username] = params[:username]
 			session[:success] = "You are logged in #{session[:username]}"
 
-			redirect '/create_post'
+			redirect '/dashboard'
 		end
 	end
 
